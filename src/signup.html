@@ -6,18 +6,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="/src/css/style.css" />
+    <script type="module" src="script/signup.ts"></script>
   </head>
   <body>
-    <header></header>
+    <header><nav></nav></header>
 
-    <main></main>
-
-    <header></header>
-
-    <nav></nav>
-
-    <main></main>
-
+    <main>
+      <form class="form-signup">
+        <input class="form-name" type="text" required placeholder="Username" />
+        <input class="form-bio" type="text" required placeholder="Bio" />
+        <input
+          class="form-pwd1"
+          type="password"
+          required
+          placeholder="Password"
+        />
+        <input
+          class="form-pwd2"
+          type="password"
+          required
+          placeholder="Repeat Password"
+        />
+        <label for="1"></label>
+        <input
+          class="form-radio"
+          id="1"
+          type="radio"
+          name="profile-picture"
+          value="1"
+        />
+        <label for="2"></label>
+        <input
+          class="form-radio"
+          id="2"
+          type="radio"
+          name="profile-picture"
+          value="2"
+        />
+        <label for="3"></label>
+        <input
+          class="form-radio"
+          id="3"
+          type="radio"
+          name="profile-picture"
+          value="3"
+        />
+        <input class="form-submit" type="submit" value="Sign up" />
+      </form>
+    </main>
     <footer></footer>
   </body>
 </html>
