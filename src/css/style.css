@@ -3,6 +3,10 @@
   box-sizing: border-box;
   margin: 0;
 }
+.wrapper {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+}
 a {
   text-decoration: none;
 }
@@ -57,9 +61,15 @@ header {
 }
   
 
+.test {
+  text-align: center;
+}
 
-
-
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
     
 
