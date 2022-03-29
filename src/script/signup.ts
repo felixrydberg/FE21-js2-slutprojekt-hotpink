@@ -1,6 +1,6 @@
 import { db } from './modules/db';
 import { ref, onValue, set, get } from 'firebase/database';
-import { userAvailable, pwdMatch } from './modules/signfunctions';
+import { userAvailable, pwdMatch, pwdSpec } from './modules/signfunctions';
 import { User } from './modules/user';
 
 (function () {
@@ -36,14 +36,14 @@ import { User } from './modules/user';
       console.log(`${name} is unavailable`);
     } else if (pwdMatch(pwd1, pwd2)) {
       console.log(`Pwd doesnt match`);
+    } else if (pwdSpec(pwd1)) {
+      console.log(`Pwd doesnt reach spec`);
     } else {
       addUser(new User(bio, img, pwd1, name));
     }
   };
 
   const addUser = (user: User) => {
-    // set(ref(db, `/users/${user.getName()}`), user);
-    localStorage.setItem('login', true);
-    if (localStorage.getItem('login')) console.log('gaming');
+    set(ref(db, `/users/${user.getName()}`), user);
   };
 })();

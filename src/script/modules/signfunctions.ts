@@ -15,3 +15,13 @@ export const pwdMatch = (pwd1, pwd2): boolean => {
     return true;
   }
 };
+
+export const pwdSpec = (pwd1): boolean => {
+  const filter =
+    /^(?=.*\p{Ll})(?=.*\p{Lu})(?=.*[\d|@#$!%*?&])[\p{L}\d@#$!%*?&]{8,32}$/gu;
+  if (pwd1.match(filter)) {
+    return false;
+  } else {
+    return true;
+  }
+};
