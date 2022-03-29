@@ -11,10 +11,13 @@
   -webkit-box-shadow: 0 2px 5px rgba(0,0,0,0.075);
   -moz-box-shadow: 0 2px 5px rgba(0,0,0,0.075);
   text-align: center;
+  
+  
 }
 .profilecard:hover .avatar-flip {
   transform: rotateY(180deg);
   -webkit-transform: rotateY(180deg);
+  
 }
 .profilecard:hover .avatar-flip img:first-child {
   opacity: 0;
@@ -33,9 +36,12 @@
   transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
-  box-shadow: 0 0 0 13px #f0f0f0;
-  -webkit-box-shadow: 0 0 0 13px #f0f0f0;
-  -moz-box-shadow: 0 0 0 13px #f0f0f0;
+  box-shadow: 0 0 0 13px #230357;
+  -webkit-box-shadow: 0 0 0 13px #ff009d;
+  -moz-box-shadow: 0 0 0 13px #030c80;
+
+
+  
 }
 .avatar-flip img {
   position: absolute;
@@ -45,9 +51,27 @@
   transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
 }
+
+@keyframes gradient {
+  0% {
+      background-position: 0% 50%;
+  }
+  50% {
+      background-position: 100% 50%;
+  }
+  100% {
+      background-position: 0% 50%;
+  }
+}
+  
+
 .avatar-flip img:first-child {
   z-index: 1;
+  
 }
 .avatar-flip img:last-child {
   z-index: 0;

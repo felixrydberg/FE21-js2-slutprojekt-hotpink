@@ -6,21 +6,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="/src/css/style.css" />
-
+    <link rel="stylesheet" href="/src/css/sign.css">
     <script type="module" src="script/signin.ts"></script>
   </head>
 
   <body>
-    <header><nav></nav></header>
+    <div class="wrapper">
+    <header><img id="logotyp" src="/src/img/logo.svg" alt="">
+    
+    </header>
+    <hr>
+    
 
+    <nav> <nav id="mainnav" >
+      <input id="toggle" type="checkbox">
+  
+  
+
+      <label class="toggle-container" for="toggle">
+    
+          <span class="button button-toggle"></span>
+      </label>
+  
+
+      <nav class="nav">
+          <a class="nav-item" href="index.html"><img class="nav-item" src="/src/img/bx-home.svg" alt=""></a>
+          <a class="nav-item" href="profil.html"><img class="nav-item" src="/src/img/profile.svg" alt=""></a>
+          <a class="nav-item" href="signin.html"><img class="nav-item" src="/src/img/bxs-log-in.svg" alt=""></a>
+          <a class="nav-item" href=""></a>
+      </nav></nav>
     <main>
+      <div id="signin">
       <form class="form-signin">
         <input class="form-name" type="text" placeholder="Username" />
         <input class="form-pwd" type="password" placeholder="Password" />
         <input type="submit" value="Sign in" />
+        <input id="signingin" type="submit" value="Sign in" />
+        <input id="register" type="submit"  value="Register" />
       </form>
+    </div>
     </main>
+    <footer>Lorem ipsum dolor sit amet.</footer>
+  </div>
+</body>
 
-    <footer></footer>
-  </body>
 </html>
