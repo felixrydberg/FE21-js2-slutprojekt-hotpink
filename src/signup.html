@@ -7,19 +7,42 @@
     <title>Document</title>
     <link rel="stylesheet" href="/src/css/style.css" />
     <script type="module" src="script/signup.ts"></script>
+    <link rel="stylesheet" href="/src/css/sign.css">
   </head>
   <body>
 
 
+    <div class="wrapper">
+    <header><img id="logotyp" src="/src/img/logo.svg" alt="">
     
-    <header></header>
-   
+    </header>
+    <hr>
+    <nav> <nav id="mainnav" >
+      <input id="toggle" type="checkbox">
+  
+  
+
+      <label class="toggle-container" for="toggle">
+    
+          <span class="button button-toggle"></span>
+      </label>
+  
+
+      <nav class="nav">
+          <a class="nav-item" href="index.html"><img class="nav-item" src="/src/img/bx-home.svg" alt=""></a>
+          <a class="nav-item" href="profil.html"><img class="nav-item" src="/src/img/profile.svg" alt=""></a>
+          <a class="nav-item" href="signin.html"><img class="nav-item" src="/src/img/bxs-log-in.svg" alt=""></a>
+          <a class="nav-item" href=""></a>
+      </nav></nav>
   
 
     <main>
+
+      <div id="signup">
+
       <form class="form-signup">
         <input class="form-name" type="text" required placeholder="Username" />
-        <input class="form-bio" type="text" required placeholder="Bio" />
+        
         <input
           class="form-pwd1"
           id="pwd"
@@ -27,16 +50,20 @@
           required
           placeholder="Password"
         />
-        <label for="pwd"
-          >8-32 characters, needs to include Uppercase, Lowercase, Digit or
-          #¤!?*</label
-        >
+       
         <input
           class="form-pwd2"
           type="password"
           required
           placeholder="Repeat Password"
         />
+        <label id="password" for="pwd"
+        >8-32 characters, needs to include Uppercase, Lowercase, Digit or
+        #¤!?*</label
+      >
+      <input class="form-bio" type="text" required placeholder="Bio" />
+
+<div id="imageuser">
         <label for="1"></label>
         <input
           class="form-radio"
@@ -61,11 +88,13 @@
           name="profile-picture"
           value="3"
         />
+      </div>
         <input class="form-submit" type="submit" value="Sign up" />
       </form>
+      </div>
     </main>
-    <footer></footer>
+    <footer>Lorem ipsum dolor sit amet.</footer>
 
-   
+  </div>
   </body>
 </html>
