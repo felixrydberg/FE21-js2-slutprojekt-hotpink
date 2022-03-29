@@ -9,7 +9,7 @@ const firebaseConfig = {
   projectId: 'hotpink-a9449',
   storageBucket: 'hotpink-a9449.appspot.com',
   messagingSenderId: '539798814024',
-  appId: '1:539798814024:web:0fe45c864d6f8161efc77d',
+  appId: '1:539798814024:web:cd59108fc95c3722efc77d',
 };
 
 const app = initializeApp(firebaseConfig);
