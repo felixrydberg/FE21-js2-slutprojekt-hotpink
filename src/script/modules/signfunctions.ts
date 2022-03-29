@@ -1,13 +1,15 @@
 import { db } from './db';
 import { ref, get } from 'firebase/database';
 
+// Kollar om användarnamnet finns i Databasen
 export async function userAvailable(name): Promise<boolean> {
-  const data = get(ref(db, `/users`));
-  for (const key in (await data).val()) {
-    if ((await data).val()[key].username === name) return true;
+  const snapshot = get(ref(db, `/users/${name}`));
+  if ((await snapshot).exists()) {
+    return true;
   }
 }
 
+// Kollar om lösenorden matchar
 export const pwdMatch = (pwd1, pwd2): boolean => {
   if (pwd1 === pwd2) {
     return false;
@@ -16,6 +18,7 @@ export const pwdMatch = (pwd1, pwd2): boolean => {
   }
 };
 
+// Kollar om lösenordet uppfyller kraven för lösenord
 export const pwdSpec = (pwd1): boolean => {
   const filter =
     /^(?=.*\p{Ll})(?=.*\p{Lu})(?=.*[\d|@#$!%*?&])[\p{L}\d@#$!%*?&]{8,32}$/gu;
@@ -25,3 +28,16 @@ export const pwdSpec = (pwd1): boolean => {
     return true;
   }
 };
+
+// Kollar om lösenordet matchar användarnamnet
+export async function checkPwd(name, pwd): Promise<boolean> {
+  const snapshot = get(ref(db, `/users/${name}`));
+
+  if ((await snapshot).exists()) {
+    if ((await (await snapshot).val().pwd) === pwd) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+}
