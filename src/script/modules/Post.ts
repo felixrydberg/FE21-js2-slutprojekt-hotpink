@@ -84,9 +84,14 @@ export const createPostgui = async (): Promise<void> => {
 
           // if user is owner of post, add possibility to remove it.
           if (sessionName === username) {
-            const removeBtn = document.createElement('button');
+            const removeBtn: HTMLButtonElement =
+              document.createElement('button');
             removeBtn.classList.add('remove-btn');
             removeBtn.innerText = 'Delete Post';
+            removeBtn.addEventListener('click', (e: MouseEvent): void => {
+              e.preventDefault();
+              remove(ref(db, `/posts/${category}/${id}`));
+            });
             postWrapperDiv.append(removeBtn);
           }
           article.appendChild(postWrapperDiv);
