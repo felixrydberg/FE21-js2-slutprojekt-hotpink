@@ -34,4 +34,7 @@ import { checkPwd, userAvailable } from './modules/signfunctions';
 
     window.location.replace('../');
   };
+  
+  
 })();
+
