@@ -6,6 +6,7 @@
 
 import { DataSnapshot, get, ref } from 'firebase/database';
 import { db } from './modules/db';
+import navToggle from './modules/navtoggle';
 
 ((): void => {
   const getUser = (): void => {
@@ -24,4 +25,5 @@ import { db } from './modules/db';
     });
   };
   getUser();
+  navToggle();
 })();

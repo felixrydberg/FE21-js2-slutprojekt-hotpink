@@ -1,9 +1,12 @@
 import { db } from './modules/db';
 import { ref, set } from 'firebase/database';
 import { userAvailable, pwdMatch, pwdSpec } from './modules/signfunctions';
-import User from './modules/User';
+import User from './modules/user';
+import navToggle from './modules/navtoggle';
 
 (function () {
+  navToggle();
+
   // Sätter Addeventlistner på Formen
   (function () {
     const form: HTMLElement = document.querySelector('.form-signup');
