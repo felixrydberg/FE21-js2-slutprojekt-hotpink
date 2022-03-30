@@ -1,7 +1,7 @@
 import { db } from './modules/db';
 import { ref, set } from 'firebase/database';
 import { userAvailable, pwdMatch, pwdSpec } from './modules/signfunctions';
-import { User } from './modules/user';
+import User from './modules/User';
 
 (function () {
   // Sätter Addeventlistner på Formen
