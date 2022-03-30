@@ -19,9 +19,9 @@ import User from './modules/User';
         document.querySelectorAll('.form-radio');
       let img: string;
 
-      for (const key of radio) {
+      radio.forEach((key: HTMLInputElement): void => {
         if (key.checked) img = key.value;
-      }
+      });
 
       checkUser(
         name.value.toLowerCase(),
