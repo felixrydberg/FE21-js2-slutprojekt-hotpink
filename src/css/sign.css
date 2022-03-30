@@ -1,72 +1,68 @@
 .wrapper {
-    background: linear-gradient(#141e30, #243b55);
-    height: 100vh;
+  background: linear-gradient(#141e30, #243b55);
+  height: 100vh;
 }
-.form-signup
-{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 50px;
-    padding: 50px;
-    flex-direction: column;
-    gap: 10px;
-    padding: 40px;
-    padding: 30px;
-    background: rgba(0,0,0,.5);
-    box-sizing: border-box;
-    box-shadow: 0 15px 25px rgba(0,0,0,2);
-    border-radius: 10px;
-    height: auto;
-    gap: 20px;
-  
-
+.form-signup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  padding: 50px;
+  flex-direction: column;
+  gap: 10px;
+  padding: 40px;
+  padding: 30px;
+  background: rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 2);
+  border-radius: 10px;
+  height: auto;
+  gap: 20px;
 }
 
 #signup {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 #password {
-    color: #db2c75;
-    font-size: 12px;
-    font-style: italic;
+  color: #db2c75;
+  font-size: 12px;
+  font-style: italic;
 }
 .form-bio {
-    width: 400px;
-    height: 200px;
-    text-align: center;
-    border-radius: 10px;
-    background-color: #0d151f;
-    color: white;
+  width: 400px;
+  height: 200px;
+  text-align: center;
+  border-radius: 10px;
+  background-color: #0d151f;
+  color: white;
 }
 #signin {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 50px;
-    padding: 80px;
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  padding: 80px;
 }
 
 .form-signin {
-    display: flex;
-    flex-direction: column;
-    width: 400px;
-    padding: 60px;
-    padding: 30px;
-    background: rgba(0,0,0,.5);
-    box-sizing: border-box;
-    box-shadow: 0 15px 25px rgba(0,0,0,2);
-    border-radius: 10px;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  padding: 60px;
+  padding: 30px;
+  background: rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 2);
+  border-radius: 10px;
+  gap: 20px;
 }
 
-input{
-    padding: 5px;
-    background-color: #0d151f;
-    color: white;
+input {
+  padding: 5px;
+  background-color: #0d151f;
+  color: white;
 }
