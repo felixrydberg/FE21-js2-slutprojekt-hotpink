@@ -1,63 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/profil.css">
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/profil.css" />
     <script src="./script/profile.ts" defer type="module"></script>
-</head>
+  </head>
 
-<body>
-    <header><img id="logotyp" src="./img/logo.svg" alt="">
-
-    </header>
-
+  <body>
+    <header><img id="logotyp" src="./img/logo.svg" alt="" /></header>
 
     <nav id="mainnav">
-        <input id="toggle" type="checkbox">
+      <input id="toggle" type="checkbox" />
 
+      <label class="toggle-container" for="toggle">
+        <span class="button button-toggle"></span>
+      </label>
 
-        <label class="toggle-container" for="toggle">
-
-            <span class="button button-toggle"></span>
-        </label>
-
-
-        <nav class="nav">
-            <a class="nav-item" href="index.html"><img class="nav-item" src="./img/bx-home.svg" alt=""></a>
-            <a class="nav-item" href="profile.html"><img class="nav-item" src="./img/profile.svg" alt=""></a>
-            <a class="nav-item" id="signinbtn" href="signin.html"><img class="nav-item" src="./img/bxs-log-in.svg"
-                    alt=""></a>
-
-        </nav>
-
-
-
+      <nav class="nav">
+        <a class="nav-item" href="index.html"
+          ><img class="nav-item" src="./img/bx-home.svg" alt=""
+        /></a>
+        <a class="nav-item" id="profile" href="profile.html"
+          ><img class="nav-item" src="./img/profile.svg" alt=""
+        /></a>
+        <a class="nav-item" id="signinbtn" href="signin.html"
+          ><img class="nav-item" src="./img/bxs-log-in.svg" alt=""
+        /></a>
+      </nav>
     </nav>
 
     <main>
-
-
-        <div class="profilecard">
-            <div class="avatar-flip">
-                <img src="./img/homie.png" height="150" width="150">
-                <img src="./img/homieass.png" height="150" width="150">
-            </div>
-            <h2 id="username"></h2>
-            <h4 id="title">HOVRA ÖVER MIG</h4>
-            <p id="bio"></p>
-
+      <div class="profilecard">
+        <div class="avatar-flip">
+          <img src="./img/homie.png" height="150" width="150" />
+          <img src="./img/homieass.png" height="150" width="150" />
         </div>
-
-
+        <h2 id="username"></h2>
+        <h4 id="title">HOVRA ÖVER MIG</h4>
+        <p id="bio"></p>
+      </div>
     </main>
 
-
     <footer>Lorem ipsum dolor sit amet.</footer>
-</body>
-
+  </body>
 </html>
