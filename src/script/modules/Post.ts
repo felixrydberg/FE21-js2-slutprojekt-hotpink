@@ -16,16 +16,10 @@ export default class Post {
   constructor(
     public readonly username: string,
     public title: string,
-    public message: string,
-    uid?: string,
-    timestamp?: string
+    public message: string
   ) {
-    this.uid =
-      typeof uid === 'undefined' ? new ShortUniqueId({ length: 10 })() : uid;
-    this.timestamp =
-      typeof timestamp === 'undefined'
-        ? new Date().toLocaleString('sv-SE')
-        : timestamp;
+    this.uid = new ShortUniqueId({ length: 10 })();
+    this.timestamp = new Date().toLocaleString('sv-SE');
   }
 }
 
@@ -121,7 +115,7 @@ export const createPostgui = (): void => {
 };
 
 const createForm = (category: string): HTMLDivElement => {
-  const username = sessionStorage.getItem('name');
+  const username: string = sessionStorage.getItem('name');
 
   const container: HTMLDivElement = document.createElement('div');
   container.classList.add('form-container');
