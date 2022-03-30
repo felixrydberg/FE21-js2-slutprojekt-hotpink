@@ -1,9 +1,10 @@
 import { db } from './modules/db';
-import { ref, onValue, set, get } from 'firebase/database';
+import { ref, set } from 'firebase/database';
 import { userAvailable, pwdMatch, pwdSpec } from './modules/signfunctions';
 import { User } from './modules/user';
 
 (function () {
+  // Sätter Addeventlistner på Formen
   (function () {
     const form: HTMLElement = document.querySelector('.form-signup');
 
@@ -14,17 +15,25 @@ import { User } from './modules/user';
       const bio: HTMLInputElement = document.querySelector('.form-bio');
       const pwd1: HTMLInputElement = document.querySelector('.form-pwd1');
       const pwd2: HTMLInputElement = document.querySelector('.form-pwd2');
-      const radio: HTMLInputElement[] =
+      const radio: NodeListOf<HTMLInputElement> =
         document.querySelectorAll('.form-radio');
       let img: string;
 
       for (const key of radio) {
         if (key.checked) img = key.value;
       }
-      checkUser(name.value, bio.value, pwd1.value, pwd2.value, img);
+
+      checkUser(
+        name.value.toLowerCase(),
+        bio.value,
+        pwd1.value,
+        pwd2.value,
+        img
+      );
     });
   })();
 
+  // Kollar om användaren uppfyller x antal krav
   const checkUser = async (
     name: string,
     bio: string,
@@ -39,11 +48,14 @@ import { User } from './modules/user';
     } else if (pwdSpec(pwd1)) {
       console.log(`Pwd doesnt reach spec`);
     } else {
-      addUser(new User(bio, img, pwd1, name));
+      addUser(new User(bio, img, pwd1, name.toLowerCase()));
     }
   };
 
+  // Skapar posten i databasen och skickar användaren till index.html
   const addUser = (user: User) => {
     set(ref(db, `/users/${user.getName()}`), user);
+
+    window.location.replace('../');
   };
 })();
