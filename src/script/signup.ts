@@ -25,7 +25,6 @@ import navToggle from './modules/navtoggle';
       radio.forEach((key: HTMLInputElement): void => {
         if (key.checked) {
           img = key.value;
-          console.log(img);
         }
       });
 
@@ -34,7 +33,7 @@ import navToggle from './modules/navtoggle';
         bio.value,
         pwd1.value,
         pwd2.value,
-        img.href
+        img
       );
     });
   })();

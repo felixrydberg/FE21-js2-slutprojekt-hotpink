@@ -16,7 +16,9 @@ import navToggle from './modules/navtoggle';
         const { bio, img, username } = snapshot.val();
         let firstName = document.getElementById('username');
         let biography = document.getElementById('bio');
-        let profilePicture = document.getElementById('profilepic');
+        let profilePicture = <HTMLImageElement>(
+          document.getElementById('profilepic')
+        );
 
         profilePicture.src = img;
         firstName.innerText = username;
