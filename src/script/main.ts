@@ -1,4 +1,10 @@
-import { db } from "./modules/db";
-import navToggle from "./modules/navtoggle";
+import { db } from './modules/db';
+import { DataSnapshot, onValue, ref } from 'firebase/database';
+import { createPostgui } from './modules/Post';
+import navToggle from './modules/navtoggle';
 
-navToggle();
+((): void => {
+  const dbRef = ref(db, '/posts');
+  onValue(dbRef, (snapshot: DataSnapshot): void => createPostgui());
+  navToggle();
+})();
