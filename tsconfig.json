@@ -1,8 +1,6 @@
 {
   "compilerOptions": {
     "module": "es2022",
-    "moduleResolution": "Node",
-    "downlevelIteration": true,
-    "lib": ["es2019", "DOM", "DOM.Iterable"]
+    "moduleResolution": "Node"
   }
 }

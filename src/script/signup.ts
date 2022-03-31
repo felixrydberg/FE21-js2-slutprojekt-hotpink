@@ -1,25 +1,25 @@
-import { db } from "./modules/db";
-import { ref, set } from "firebase/database";
-import { userAvailable, pwdMatch, pwdSpec } from "./modules/signfunctions";
-import User from "./modules/user";
-import navToggle from "./modules/navtoggle";
+import { db } from './modules/db';
+import { ref, set } from 'firebase/database';
+import { userAvailable, pwdMatch, pwdSpec } from './modules/signfunctions';
+import User from './modules/user';
+import navToggle from './modules/navtoggle';
 
 (function () {
   navToggle();
 
   // Sätter Addeventlistner på Formen
   (function () {
-    const form: HTMLElement = document.querySelector(".form-signup");
+    const form: HTMLElement = document.querySelector('.form-signup');
 
-    form.addEventListener("submit", (event) => {
+    form.addEventListener('submit', (event) => {
       event.preventDefault();
 
-      const name: HTMLInputElement = document.querySelector(".form-name");
-      const bio: HTMLInputElement = document.querySelector(".form-bio");
-      const pwd1: HTMLInputElement = document.querySelector(".form-pwd1");
-      const pwd2: HTMLInputElement = document.querySelector(".form-pwd2");
+      const name: HTMLInputElement = document.querySelector('.form-name');
+      const bio: HTMLInputElement = document.querySelector('.form-bio');
+      const pwd1: HTMLInputElement = document.querySelector('.form-pwd1');
+      const pwd2: HTMLInputElement = document.querySelector('.form-pwd2');
       const radio: NodeListOf<HTMLInputElement> =
-        document.querySelectorAll(".form-radio");
+        document.querySelectorAll('.form-radio');
       let img: string;
 
       radio.forEach((key: HTMLInputElement): void => {
@@ -34,7 +34,7 @@ import navToggle from "./modules/navtoggle";
         bio.value,
         pwd1.value,
         pwd2.value,
-        img
+        img.href
       );
     });
   })();
@@ -62,6 +62,6 @@ import navToggle from "./modules/navtoggle";
   const addUser = (user: User) => {
     set(ref(db, `/users/${user.getName()}`), user);
 
-    window.location.replace("../");
+    window.location.replace('../');
   };
 })();
