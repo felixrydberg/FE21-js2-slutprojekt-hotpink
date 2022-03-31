@@ -10,16 +10,19 @@ import {
 } from 'firebase/database';
 
 export default class Post {
-  private readonly uid: ShortUniqueId | string;
-  private readonly timestamp: Date | string;
+  public readonly timestamp: Date | string;
 
   constructor(
     public readonly username: string,
     public title: string,
-    public message: string
+    public message: string,
+    public readonly uid: string,
+    timestamp?: Date | string | undefined
   ) {
-    this.uid = new ShortUniqueId({ length: 10 })();
-    this.timestamp = new Date().toLocaleString('sv-SE');
+    this.timestamp =
+      typeof timestamp === 'undefined'
+        ? new Date().toLocaleString('sv-SE')
+        : timestamp;
   }
 }
 
@@ -27,7 +30,7 @@ export const createPostgui = (): void => {
   const main: HTMLElement = document.querySelector('main');
   const sessionName = sessionStorage.getItem('name');
   const category = sessionStorage.getItem('category');
-  console.log(category);
+
   while (main.hasChildNodes()) {
     main.removeChild(main.firstChild);
   }
@@ -40,11 +43,18 @@ export const createPostgui = (): void => {
     article.appendChild(categoryTitle);
     categoryTitle.innerText = category.toUpperCase();
     if (snapshot.exists()) {
+      const posts: Post[] = [];
+
+      for (const x in snapshot.val()) {
+        const { username, uid, title, timestamp, message } = snapshot.val()[x];
+        posts.push(new Post(username, title, message, uid, timestamp));
+      }
+      posts.reverse();
+
       // If data exists create article to store category data in & attach to <main> element
       if (sessionStorage.getItem('login')) {
-        for (const id in snapshot.val()) {
-          const { username, uid, title, timestamp, message } =
-            snapshot.val()[id];
+        posts.forEach((post: Post): void => {
+          const { username, uid, title, timestamp, message } = post;
 
           // Post Body with header div containing timestamp, who posted, title and message
           const postWrapperDiv = document.createElement('div');
@@ -95,12 +105,12 @@ export const createPostgui = (): void => {
             removeBtn.innerText = 'Delete Post';
             removeBtn.addEventListener('click', (e: MouseEvent): void => {
               e.preventDefault();
-              remove(ref(db, `/posts/${category}/${id}`));
+              remove(ref(db, `/posts/${category}/${uid}`));
             });
             postWrapperDiv.append(removeBtn);
           }
           article.appendChild(postWrapperDiv);
-        }
+        });
       }
     }
     if (sessionStorage.getItem('login')) {
@@ -190,8 +200,8 @@ interface config {
 const createPost = (newPost: config): void => {
   const dbRef = ref(db, `/posts/${newPost.category}`);
 
-  const post = new Post(newPost.username, newPost.title, newPost.message);
   const uuid: string = push(dbRef).key;
+  const post = new Post(newPost.username, newPost.title, newPost.message, uuid);
   const posts = {};
   posts[uuid] = post;
   update(dbRef, posts);

@@ -1,4 +1,4 @@
-import { DataSnapshot, get, ref } from 'firebase/database';
+import { DataSnapshot, get, ref, remove } from 'firebase/database';
 import { db } from './modules/db';
 import navToggle from './modules/navtoggle';
 
@@ -23,6 +23,18 @@ import navToggle from './modules/navtoggle';
         profilePicture.src = img;
         firstName.innerText = username;
         biography.innerText = bio;
+
+        if (sessionStorage.getItem('name') === userName) {
+          const removeAccount: HTMLButtonElement =
+            document.querySelector('.remove-profile');
+          removeAccount.addEventListener('click', (e: MouseEvent): void => {
+            e.preventDefault();
+            const dbRef = ref(db, `/users/${userName}`);
+            remove(dbRef);
+            sessionStorage.clear();
+            window.location.replace('../index.html');
+          });
+        }
       }
     });
   };
