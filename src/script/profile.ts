@@ -24,15 +24,17 @@ import navToggle from './modules/navtoggle';
         firstName.innerText = username;
         biography.innerText = bio;
 
-        const removeAccount: HTMLButtonElement =
-          document.querySelector('.remove-profile');
-        removeAccount.addEventListener('click', (e: MouseEvent): void => {
-          e.preventDefault();
-          const dbRef = ref(db, `/users/${userName}`);
-          remove(dbRef);
-          sessionStorage.clear();
-          window.location.replace('../index.html');
-        });
+        if (sessionStorage.getItem('name') === userName) {
+          const removeAccount: HTMLButtonElement =
+            document.querySelector('.remove-profile');
+          removeAccount.addEventListener('click', (e: MouseEvent): void => {
+            e.preventDefault();
+            const dbRef = ref(db, `/users/${userName}`);
+            remove(dbRef);
+            sessionStorage.clear();
+            window.location.replace('../index.html');
+          });
+        }
       }
     });
   };
