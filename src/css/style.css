@@ -221,6 +221,16 @@ footer {
   transition: 0.5s;
 }
 
+.forum {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: auto;
+  grid-row-start: 2;
+  grid-row-end: 4;
+}
 .index-main {
   display: flex;
   flex-direction: column;
@@ -238,4 +248,11 @@ footer {
 .form-container {
   display: flex;
   flex-direction: column;
+}
+
+.category-title {
+  overflow-y: scroll;
+}
+.article {
+  cursor: pointer;
 }

@@ -24,93 +24,90 @@ export default class Post {
 }
 
 export const createPostgui = (): void => {
-  const categories: string[] = ['gaming', 'programmering', 'mat'];
   const main: HTMLElement = document.querySelector('main');
   const sessionName = sessionStorage.getItem('name');
-
+  const category = sessionStorage.getItem('category');
+  console.log(category);
   while (main.hasChildNodes()) {
     main.removeChild(main.firstChild);
   }
 
-  categories.forEach((category: string): void => {
-    get(ref(db, `/posts/${category}`)).then((snapshot: DataSnapshot): void => {
-      const article = document.createElement('article');
-      article.classList.add('category-wrapper');
-      const categoryTitle = document.createElement('h2');
-      categoryTitle.classList.add('category-title');
+  get(ref(db, `/posts/${category}`)).then((snapshot: DataSnapshot): void => {
+    const article = document.createElement('article');
+    article.classList.add('category-wrapper');
+    const categoryTitle = document.createElement('h2');
+    categoryTitle.classList.add('category-title');
+    article.appendChild(categoryTitle);
+    categoryTitle.innerText = category.toUpperCase();
+    if (snapshot.exists()) {
+      // If data exists create article to store category data in & attach to <main> element
+      if (sessionStorage.getItem('login')) {
+        for (const id in snapshot.val()) {
+          const { username, uid, title, timestamp, message } =
+            snapshot.val()[id];
 
-      article.appendChild(categoryTitle);
-      categoryTitle.innerText = category.toUpperCase();
-      if (snapshot.exists()) {
-        // If data exists create article to store category data in & attach to <main> element
-        if (sessionStorage.getItem('login')) {
-          for (const id in snapshot.val()) {
-            const { username, uid, title, timestamp, message } =
-              snapshot.val()[id];
+          // Post Body with header div containing timestamp, who posted, title and message
+          const postWrapperDiv = document.createElement('div');
+          const postHeaderDiv = document.createElement('div');
+          const postTitle = document.createElement('h5');
+          const idParagraph = document.createElement('p');
+          const createdByParagraph = document.createElement('p');
+          const timeOfPost = document.createElement('p');
+          const messageBody = document.createElement('p');
 
-            // Post Body with header div containing timestamp, who posted, title and message
-            const postWrapperDiv = document.createElement('div');
-            const postHeaderDiv = document.createElement('div');
-            const postTitle = document.createElement('h5');
-            const idParagraph = document.createElement('p');
-            const createdByParagraph = document.createElement('p');
-            const timeOfPost = document.createElement('p');
-            const messageBody = document.createElement('p');
+          postWrapperDiv.classList.add('message-wrapper');
 
-            postWrapperDiv.classList.add('message-wrapper');
+          idParagraph.innerText = `#${uid}`;
+          idParagraph.classList.add('post-id');
 
-            idParagraph.innerText = `#${uid}`;
-            idParagraph.classList.add('post-id');
+          postTitle.innerText = `Title: ${title}`;
+          postTitle.classList.add('post-title');
 
-            postTitle.innerText = `Title: ${title}`;
-            postTitle.classList.add('post-title');
-
-            createdByParagraph.innerHTML = `Poster:<a href=""> ${username}</a>`;
-            createdByParagraph.classList.add('poster');
-            createdByParagraph.addEventListener(
-              'click',
-              (e: MouseEvent): void => {
-                e.preventDefault();
-                sessionStorage.setItem('profile', username);
-                window.location.replace('../profile.html');
-              }
-            );
-
-            timeOfPost.innerText = `Posted: ${timestamp}`;
-            timeOfPost.classList.add('timestamp');
-
-            messageBody.innerText = message;
-            messageBody.classList.add('post');
-
-            postHeaderDiv.appendChild(idParagraph);
-            postHeaderDiv.appendChild(postTitle);
-            postHeaderDiv.appendChild(createdByParagraph);
-            postHeaderDiv.appendChild(timeOfPost);
-            postWrapperDiv.appendChild(postHeaderDiv);
-            postWrapperDiv.append(messageBody);
-
-            // if user is owner of post, add possibility to remove it.
-            if (sessionName === username) {
-              const removeBtn: HTMLButtonElement =
-                document.createElement('button');
-              removeBtn.classList.add('remove-btn');
-              removeBtn.innerText = 'Delete Post';
-              removeBtn.addEventListener('click', (e: MouseEvent): void => {
-                e.preventDefault();
-                remove(ref(db, `/posts/${category}/${id}`));
-              });
-              postWrapperDiv.append(removeBtn);
+          createdByParagraph.innerHTML = `Poster:<a href=""> ${username}</a>`;
+          createdByParagraph.classList.add('poster');
+          createdByParagraph.addEventListener(
+            'click',
+            (e: MouseEvent): void => {
+              e.preventDefault();
+              sessionStorage.setItem('profile', username);
+              window.location.replace('../profile.html');
             }
-            article.appendChild(postWrapperDiv);
+          );
+
+          timeOfPost.innerText = `Posted: ${timestamp}`;
+          timeOfPost.classList.add('timestamp');
+
+          messageBody.innerText = message;
+          messageBody.classList.add('post');
+
+          postHeaderDiv.appendChild(idParagraph);
+          postHeaderDiv.appendChild(postTitle);
+          postHeaderDiv.appendChild(createdByParagraph);
+          postHeaderDiv.appendChild(timeOfPost);
+          postWrapperDiv.appendChild(postHeaderDiv);
+          postWrapperDiv.append(messageBody);
+
+          // if user is owner of post, add possibility to remove it.
+          if (sessionName === username) {
+            const removeBtn: HTMLButtonElement =
+              document.createElement('button');
+            removeBtn.classList.add('remove-btn');
+            removeBtn.innerText = 'Delete Post';
+            removeBtn.addEventListener('click', (e: MouseEvent): void => {
+              e.preventDefault();
+              remove(ref(db, `/posts/${category}/${id}`));
+            });
+            postWrapperDiv.append(removeBtn);
           }
+          article.appendChild(postWrapperDiv);
         }
       }
-      if (sessionStorage.getItem('login')) {
-        article.appendChild(createForm(category));
-      }
+    }
+    if (sessionStorage.getItem('login')) {
+      article.appendChild(createForm(category));
+    }
 
-      main.appendChild(article);
-    });
+    main.appendChild(article);
   });
 };
 
