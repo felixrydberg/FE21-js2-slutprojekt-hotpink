@@ -30,6 +30,8 @@ import navToggle from './modules/navtoggle';
           e.preventDefault();
           const dbRef = ref(db, `/users/${userName}`);
           remove(dbRef);
+          sessionStorage.clear();
+          window.location.replace('../index.html');
         });
       }
     });
