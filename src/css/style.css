@@ -136,7 +136,7 @@ footer {
 .button-toggle:before,
 .button-toggle:after {
   position: absolute;
-  content: '';
+  content: "";
   top: 50%;
   left: 0;
   width: 50%;
@@ -211,7 +211,7 @@ footer {
 }
 .nav-item:before {
   position: absolute;
-  content: '';
+  content: "";
   top: 50%;
   left: 0;
   width: 100%;
