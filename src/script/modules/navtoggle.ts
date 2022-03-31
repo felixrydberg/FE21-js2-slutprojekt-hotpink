@@ -9,5 +9,12 @@ export default function navToggle(): void {
       });
     let btnsignIn: HTMLAnchorElement = document.querySelector('#signinbtn');
     btnsignIn.style.display = 'none';
+
+    let btnlogout: HTMLAnchorElement = document.querySelector('#logoutbtn');
+    btnlogout.style.display = 'block';
+    btnlogout.addEventListener('click', () => {
+      sessionStorage.clear();
+      location.reload();
+    });
   }
 }
