@@ -1,7 +1,3 @@
-.wrapper {
-  background: linear-gradient(#141e30, #243b55);
-  height: 100vh;
-}
 .form-signup {
   display: flex;
   justify-content: center;

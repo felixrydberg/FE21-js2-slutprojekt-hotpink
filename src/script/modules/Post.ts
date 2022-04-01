@@ -42,6 +42,9 @@ export const createPostgui = (): void => {
     categoryTitle.classList.add('category-title');
     article.appendChild(categoryTitle);
     categoryTitle.innerText = category.toUpperCase();
+    if (sessionStorage.getItem('login')) {
+      article.appendChild(createForm(category));
+    }
     if (snapshot.exists()) {
       const posts: Post[] = [];
 
@@ -112,9 +115,6 @@ export const createPostgui = (): void => {
           article.appendChild(postWrapperDiv);
         });
       }
-    }
-    if (sessionStorage.getItem('login')) {
-      article.appendChild(createForm(category));
     }
 
     main.appendChild(article);
