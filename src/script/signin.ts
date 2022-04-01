@@ -1,6 +1,10 @@
 import { checkPwd, userAvailable } from './modules/signfunctions';
+import navToggle from './modules/navtoggle';
 
 (function () {
+  // Gömmer och visar specifika knappar i naven
+  navToggle();
+
   // Sätter Addeventlistner på Formen
   (function () {
     const form: HTMLElement = document.querySelector('.form-signin');

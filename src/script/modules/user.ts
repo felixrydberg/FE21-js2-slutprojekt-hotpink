@@ -1,3 +1,4 @@
+//Användare object
 export default class User {
   private readonly bio;
   private readonly img;

@@ -10,6 +10,7 @@ export default function navToggle(): void {
     let btnsignIn: HTMLAnchorElement = document.querySelector('#signinbtn');
     btnsignIn.style.display = 'none';
 
+    // Om man är inloggad visas denna knapp. Om man trycker på den tas variabler i SessionStorage bort och sidan laddas om
     let btnlogout: HTMLAnchorElement = document.querySelector('#logoutbtn');
     btnlogout.style.display = 'block';
     btnlogout.addEventListener('click', () => {

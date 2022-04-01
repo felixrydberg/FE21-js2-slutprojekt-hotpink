@@ -20,6 +20,7 @@ export const pwdMatch = (pwd1, pwd2): boolean => {
 
 // Kollar om lösenordet uppfyller kraven för lösenord
 export const pwdSpec = (pwd1): boolean => {
+  // Regex för att se om lösenordet uppfyller kravn: 8-32 karaktärer, om den innehåller Stora och små bokstäver, nummer och #¤!?* (Speciella tecken)
   const filter =
     /^(?=.*\p{Ll})(?=.*\p{Lu})(?=.*[\d|@#$!%*?&])[\p{L}\d@#$!%*?&]{8,32}$/gu;
   if (pwd1.match(filter)) {
