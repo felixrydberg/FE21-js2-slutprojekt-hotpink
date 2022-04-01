@@ -3,9 +3,12 @@ import { ref, get } from 'firebase/database';
 
 // Kollar om användarnamnet finns i Databasen
 export async function userAvailable(name): Promise<boolean> {
-  const snapshot = get(ref(db, `/users/${name}`));
+  const snapshot = get(ref(db, `users/${name}`));
   if ((await snapshot).exists()) {
     return true;
+  } else {
+    console.log('false');
+    return false;
   }
 }
 
@@ -20,6 +23,7 @@ export const pwdMatch = (pwd1, pwd2): boolean => {
 
 // Kollar om lösenordet uppfyller kraven för lösenord
 export const pwdSpec = (pwd1): boolean => {
+  // Regex för att se om lösenordet uppfyller kravn: 8-32 karaktärer, om den innehåller Stora och små bokstäver, nummer och #¤!?* (Speciella tecken)
   const filter =
     /^(?=.*\p{Ll})(?=.*\p{Lu})(?=.*[\d|@#$!%*?&])[\p{L}\d@#$!%*?&]{8,32}$/gu;
   if (pwd1.match(filter)) {

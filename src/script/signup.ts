@@ -5,6 +5,7 @@ import User from './modules/user';
 import navToggle from './modules/navtoggle';
 
 (function () {
+  // Gömmer och visar specifika knappar i naven
   navToggle();
 
   // Sätter Addeventlistner på Formen
