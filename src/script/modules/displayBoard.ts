@@ -32,13 +32,15 @@ export const createPostgui = (): void => {
     main.prepend(categoryTitle);
     // if category does'nt exist, tell user
     categoryTitle.innerText = `No data is available for category ${category}`;
+    if (sessionStorage.getItem('login')) {
+      article.appendChild(createForm(category));
+    }
     // End Category Header
     if (snapshot.exists()) {
       // If category snapshop exists, publish category name
       categoryTitle.innerText = category.toUpperCase();
       // reverse order messages are shown
       const posts: Post[] = chronologicalOrder(snapshot);
-
       // If data exists create article to store category data in & attach to <main> element
       if (sessionStorage.getItem('login')) {
         posts.forEach((post: Post): void => {
@@ -59,9 +61,6 @@ export const createPostgui = (): void => {
           );
         });
       }
-    }
-    if (sessionStorage.getItem('login')) {
-      article.appendChild(createForm(category));
     }
     main.appendChild(article);
   });

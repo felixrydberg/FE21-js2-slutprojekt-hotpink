@@ -2,6 +2,7 @@
 * {
   box-sizing: border-box;
   margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 /* Background for all pages */
@@ -14,12 +15,6 @@
 a {
   text-decoration: none;
 }
-
-/* main {
-  margin-top: 150px;
-  padding: 200px;
-  color: black;
-} */
 
 #mainnav {
   position: absolute;
@@ -246,11 +241,26 @@ footer {
   width: 50vw;
 }
 
-.form-container {
-  display: flex;
-  flex-direction: column;
-}
-
 .article {
   cursor: pointer;
+}
+
+.posts-h1 {
+  margin-bottom: 7rem;
+  color: white;
+}
+
+.article-category {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 0.5rem;
+  margin: 0.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  color: white;
+  width: 50vw;
+}
+
+.article-category a {
+  text-align: center;
+  color: white;
 }
