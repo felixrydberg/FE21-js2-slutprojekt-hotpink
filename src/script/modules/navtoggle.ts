@@ -1,10 +1,14 @@
 export default function navToggle(): void {
   if (sessionStorage.getItem('login')) {
+    // Added clickelement on profile button, which captures login username into profile storage and reroutes to profile
     document
       .getElementById('profile')
       .addEventListener('click', (e: MouseEvent): void => {
         e.preventDefault();
-        sessionStorage.setItem('profile', sessionStorage.getItem('name'));
+        sessionStorage.setItem(
+          'profile',
+          sessionStorage.getItem('name').toLowerCase()
+        );
         window.location.replace('../profile.html');
       });
 

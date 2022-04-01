@@ -1,6 +1,7 @@
 import navToggle from './modules/navtoggle';
 
 ((): void => {
+  // Creates categories which holds clickable element.
   const showCategories = (): void => {
     const categories: string[] = ['gaming', 'programmering', 'mat'];
     const main: HTMLDivElement = document.querySelector('.index-main');
@@ -12,6 +13,7 @@ import navToggle from './modules/navtoggle';
       link.setAttribute('href', '../forum.html');
       link.setAttribute('target', '_self');
 
+      // Stores category data in session, for usage when creating posts
       link.addEventListener('click', (e: MouseEvent): void =>
         sessionStorage.setItem('category', category)
       );
