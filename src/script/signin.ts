@@ -21,11 +21,12 @@ import navToggle from './modules/navtoggle';
 
   // Kollar om användaren uppfyller x antal krav och om lösenord matchar
   const checkUser = async (name, pwd) => {
-    if (await !userAvailable(name)) {
+    if (!(await userAvailable(name))) {
       console.log('User doesnt exsist');
     } else if (await checkPwd(name, pwd)) {
       console.log('pwd doesnt match username');
     } else {
+      console.log('login');
       loginUser(name);
     }
   };

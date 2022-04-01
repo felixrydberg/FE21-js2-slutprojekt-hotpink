@@ -3,9 +3,12 @@ import { ref, get } from 'firebase/database';
 
 // Kollar om användarnamnet finns i Databasen
 export async function userAvailable(name): Promise<boolean> {
-  const snapshot = get(ref(db, `/users/${name}`));
+  const snapshot = get(ref(db, `users/${name}`));
   if ((await snapshot).exists()) {
     return true;
+  } else {
+    console.log('false');
+    return false;
   }
 }
 
