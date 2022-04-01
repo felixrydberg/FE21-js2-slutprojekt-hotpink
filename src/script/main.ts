@@ -7,7 +7,7 @@ import navToggle from './modules/navtoggle';
     const main: HTMLDivElement = document.querySelector('.index-main');
     categories.forEach((category: string): void => {
       const article: HTMLElement = document.createElement('article');
-      article.classList.add('category-wrapper');
+      article.classList.add('article-category');
 
       const link: HTMLAnchorElement = document.createElement('a');
       link.setAttribute('href', '../forum.html');
