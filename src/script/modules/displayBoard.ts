@@ -74,13 +74,11 @@ const createForm = (category: string): HTMLDivElement => {
   container.classList.add('form-container');
   // creating form to send messages with
   const form: HTMLFormElement = document.createElement('form');
-  form.setAttribute('name', `${category}`);
+  form.setAttribute('id', `${category}`);
   form.classList.add('post-forms');
 
   // Title input which has a 5 character minimum requirement
-  const titleLabel: HTMLLabelElement = document.createElement('label');
-  titleLabel.innerText = 'Title: ';
-  titleLabel.setAttribute('for', 'title');
+
   const title: HTMLInputElement = document.createElement('input');
   title.setAttribute('type', 'text');
   title.setAttribute('name', 'title');
@@ -89,24 +87,25 @@ const createForm = (category: string): HTMLDivElement => {
   title.required = true;
 
   // Message input which has a max 500 character limit
-  const messageLabel: HTMLLabelElement = document.createElement('label');
-  messageLabel.setAttribute('for', 'message');
-  messageLabel.innerText = 'Message: ';
-  const message: HTMLInputElement = document.createElement('input');
-  message.setAttribute('type', 'text');
+
+  const message: HTMLTextAreaElement = document.createElement('textarea');
+
   message.setAttribute('name', 'message');
   message.setAttribute('id', 'message');
+  message.setAttribute('maxlength', '500');
+  message.setAttribute('form', category);
+  message.setAttribute('cols', '50');
+  message.setAttribute('rows', '10');
   message.setAttribute(
     'placeholder',
     'Write something interesting.. (max 500 char length) '
   );
-  message.required = true;
 
   // Submit button with listener that checks that the limit & requirement is upheld & forwards data to post creation.
   const submitButton: HTMLInputElement = document.createElement('input');
   submitButton.setAttribute('type', 'submit');
   submitButton.setAttribute('value', 'Post Message');
-  submitButton.addEventListener('click', (e: MouseEvent): void => {
+  form.addEventListener('submit', (e: MouseEvent): void => {
     e.preventDefault();
 
     if (
@@ -136,9 +135,8 @@ const createForm = (category: string): HTMLDivElement => {
   resetButton.setAttribute('type', 'reset');
   resetButton.setAttribute('value', 'Cancel');
 
-  form.appendChild(titleLabel);
   form.appendChild(title);
-  form.appendChild(messageLabel);
+
   form.appendChild(message);
 
   form.appendChild(submitButton);
