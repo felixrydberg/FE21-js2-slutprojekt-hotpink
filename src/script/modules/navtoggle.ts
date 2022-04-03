@@ -9,7 +9,7 @@ export default function navToggle(): void {
           'profile',
           sessionStorage.getItem('name').toLowerCase()
         );
-        window.location.replace('../profile.html');
+        window.location.replace('./profile.html');
       });
 
     let btnsignIn: HTMLAnchorElement = document.querySelector('#signinbtn');

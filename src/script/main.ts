@@ -10,7 +10,7 @@ import navToggle from './modules/navtoggle';
       article.classList.add('article-category');
 
       const link: HTMLAnchorElement = document.createElement('a');
-      link.setAttribute('href', '../forum.html');
+      link.setAttribute('href', './forum.html');
       link.setAttribute('target', '_self');
 
       // Stores category data in session, for usage when creating posts

@@ -37,6 +37,6 @@ import navToggle from './modules/navtoggle';
     sessionStorage.setItem('login', 'true');
     sessionStorage.setItem('name', name);
 
-    window.location.replace('../');
+    window.location.replace('./index.html');
   };
 })();

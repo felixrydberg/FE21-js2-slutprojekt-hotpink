@@ -14,10 +14,11 @@ import navToggle from './modules/navtoggle';
 
       await get(ref(db, `/users/${userName.toLowerCase()}`)).then(
         (snapshot: DataSnapshot): void => {
+          let firstName = document.getElementById('username');
+          let biography = document.getElementById('bio');
           if (snapshot.exists()) {
             const { bio, img, username } = snapshot.val();
-            let firstName = document.getElementById('username');
-            let biography = document.getElementById('bio');
+
             let profilePicture = <HTMLImageElement>(
               document.getElementById('profilepic')
             );
@@ -35,9 +36,13 @@ import navToggle from './modules/navtoggle';
                 const dbRef = ref(db, `/users/${userName}`);
                 remove(dbRef);
                 sessionStorage.clear();
-                window.location.replace('../index.html');
+                window.location.replace('./index.html');
               });
             }
+          } else {
+            firstName.innerText = 'No such user';
+            biography.innerText =
+              'If this user ever existed will remain one of lifes great unsolved mysteries';
           }
         }
       );
