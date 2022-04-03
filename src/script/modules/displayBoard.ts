@@ -94,7 +94,7 @@ const createForm = (category: string): HTMLDivElement => {
   message.setAttribute('id', 'message');
   message.setAttribute('maxlength', '500');
   message.setAttribute('form', category);
-  message.setAttribute('cols', '50');
+  message.setAttribute('cols', '10');
   message.setAttribute('rows', '10');
   message.setAttribute(
     'placeholder',
@@ -212,7 +212,7 @@ const createMessageBody = (
   createdByParagraph.addEventListener('click', (e: MouseEvent): void => {
     e.preventDefault();
     sessionStorage.setItem('profile', username);
-    window.location.replace('../profile.html');
+    window.location.replace('profile.html');
   });
 
   timeOfPost.innerText = `Posted: ${timestamp}`;

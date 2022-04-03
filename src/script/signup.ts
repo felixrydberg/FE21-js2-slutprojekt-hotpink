@@ -62,6 +62,6 @@ import navToggle from './modules/navtoggle';
   const addUser = (user: User) => {
     set(ref(db, `/users/${user.getName()}`), user);
 
-    window.location.replace('../');
+    window.location.replace('./index.html');
   };
 })();
